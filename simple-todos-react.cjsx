@@ -41,7 +41,7 @@ Meteor.methods
   setChecked: (taskId, newCheckedStatus) ->
     task = Tasks.findOne(taskId)
 
-    if task.private AND task.owner != Meteor.userId()
+    if task.private && task.owner != Meteor.userId()
       throw new Meteor.Error "not-authorized"
 
     Tasks.update(taskId, {$set: {checked: newCheckedStatus} })
